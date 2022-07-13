@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <>
         <div className="navbar bg-light w-25 m-3 p-4 fs-2">Navbar</div>
-        <div className="ms-5 mb-4">
+        <div className="ms-5 m-4">
           <Products />
         </div>
       </>

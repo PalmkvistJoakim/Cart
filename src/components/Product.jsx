@@ -1,17 +1,13 @@
 import React, { Component } from "react";
 
 class Product extends Component {
-  state = {
-    quantity: this.props.product.quantity,
-  };
-
   render() {
     return (
       <div className="m-2">
         <span className={this.getBadgeClasses()}>{this.formatQuantity()}</span>
         <button
           className="btn btn-secondary ms-2"
-          onClick={this.handleIncrement}
+          onClick={() => this.props.OnIncrement(this.props.product)}
         >
           +
         </button>
@@ -32,19 +28,15 @@ class Product extends Component {
   }
 
   formatQuantity() {
-    return this.state.quantity === 0 ? "Zero" : this.state.quantity;
+    return this.props.product.quantity === 0
+      ? "Zero"
+      : this.props.product.quantity;
   }
   getBadgeClasses() {
-    return this.state.quantity >= 1 ? "btn btn-primary" : "btn btn-warning";
+    return this.props.product.quantity >= 1
+      ? "btn btn-primary"
+      : "btn btn-warning";
   }
-
-  handleIncrement = () => {
-    this.setState({ quantity: this.state.quantity + 1 });
-  };
-
-  handleDecrement = () => {
-    this.setState({ quantity: this.state.quantity - 1 });
-  };
 }
 
 export default Product;
