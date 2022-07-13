@@ -2,20 +2,29 @@ import React, { Component } from "react";
 
 class Product extends Component {
   state = {
-    quantity: 0,
+    quantity: this.props.product.quantity,
   };
 
   render() {
     return (
-      <div>
-        <span class={this.getBadgeClasses()}>{this.formatQuantity()}</span>
-        <button class="btn btn-secondary" onClick={this.handleIncrement}>
+      <div className="m-2">
+        <span className={this.getBadgeClasses()}>{this.formatQuantity()}</span>
+        <button
+          className="btn btn-secondary ms-2"
+          onClick={this.handleIncrement}
+        >
           +
         </button>
-        <button class="btn btn-secondary" onClick={this.handleDecrement}>
+        <button
+          className="btn btn-secondary ms-2"
+          onClick={this.handleDecrement}
+        >
           -
         </button>
-        <button class="btn btn-danger" onClick={this.handleDelete}>
+        <button
+          className="btn btn-danger ms-2"
+          onClick={() => this.props.onDelete(this.props.product.id)}
+        >
           X
         </button>
       </div>
@@ -35,10 +44,6 @@ class Product extends Component {
 
   handleDecrement = () => {
     this.setState({ quantity: this.state.quantity - 1 });
-  };
-
-  handleDelete = () => {
-    this.setState({ quantity: this.state.quantity });
   };
 }
 

@@ -14,11 +14,20 @@ class Products extends Component {
     return (
       <div>
         {this.state.products.map((product) => (
-          <Product />
+          <Product
+            key={product.id}
+            product={product}
+            onDelete={this.handleDelete}
+          />
         ))}
       </div>
     );
   }
+
+  handleDelete = (id) => {
+    const products = this.state.products.filter((p) => p.id !== id);
+    this.setState({ products });
+  };
 }
 
 export default Products;
