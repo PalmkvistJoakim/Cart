@@ -3,9 +3,10 @@ import Product from "./Product";
 
 class Products extends Component {
   render() {
-    const { onReset, onDelete, onIncrement, products } = this.props;
+    const { onReset, onDelete, onIncrement, products, onDecrement } =
+      this.props;
     return (
-      <div className="container mt-4">
+      <div className="m-4">
         <button className="btn btn-primary" onClick={onReset}>
           Reset
         </button>
@@ -15,6 +16,7 @@ class Products extends Component {
             product={product}
             onDelete={onDelete}
             onIncrement={onIncrement}
+            onDecrement={onDecrement}
           />
         ))}
       </div>

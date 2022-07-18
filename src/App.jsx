@@ -15,7 +15,7 @@ class App extends Component {
     const { products } = this.state;
     return (
       <>
-        <NavBar productCount={products.length} />
+        <NavBar productCount={this.productCount()} />
 
         <Products
           products={products}
@@ -28,8 +28,12 @@ class App extends Component {
     );
   }
 
-  handleDecrement = () => {
-    this.setState({ quantity: this.state.quantity - 1 });
+  handleDecrement = (product) => {
+    const products = [...this.state.products];
+    const index = products.indexOf(product);
+    products[index] = { ...product };
+    products[index].quantity--;
+    this.setState({ products });
   };
 
   handleIncrement = (product) => {
@@ -52,6 +56,13 @@ class App extends Component {
     }));
     this.setState({ products });
   };
+
+  productCount() {
+    const products = this.state.products.filter(
+      (product) => product.quantity >= 1
+    );
+    return products.length;
+  }
 }
 
 export default App;
