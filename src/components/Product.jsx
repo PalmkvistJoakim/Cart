@@ -4,28 +4,34 @@ class Product extends Component {
   render() {
     const { onIncrement, onDelete, product, onDecrement } = this.props;
     return (
-      <div className="container col m-2">
-        <div className={this.getBadgeClasses()}>{this.formatQuantity()}</div>
-        <span className="col ms-4">
-          <button
-            className="btn btn-secondary me-2"
-            onClick={() => onIncrement(product)}
-          >
-            +
-          </button>
-          <button
-            className={this.disabled()}
-            onClick={() => onDecrement(product)}
-          >
-            -
-          </button>
-          <button
-            className="btn btn-danger"
-            onClick={() => onDelete(product.id)}
-          >
-            X
-          </button>
-        </span>
+      <div className="container m-2">
+        <div className="row">
+          <div className="col-1">
+            <div className={this.getBadgeClasses()}>
+              {this.formatQuantity()}
+            </div>
+          </div>
+          <span className="col">
+            <button
+              className="btn btn-secondary me-2"
+              onClick={() => onIncrement(product)}
+            >
+              +
+            </button>
+            <button
+              className={this.disabled()}
+              onClick={() => onDecrement(product)}
+            >
+              -
+            </button>
+            <button
+              className="btn btn-danger"
+              onClick={() => onDelete(product.id)}
+            >
+              X
+            </button>
+          </span>
+        </div>
       </div>
     );
   }
